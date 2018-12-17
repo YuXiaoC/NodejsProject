@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+</head>
+<body>
+        <h1>首页</h1>
+        <!-- <form action="/upload/goods"  method="post" enctype="multipart/form-data"> -->
+            <input type="file" name="goodspic" id="upLoadCentent" multiple>
+            <button class="btnSend">上传</button>
+            <button class="btnSend2">多文件上传</button>
+        <!-- </form> -->
+</body>
+</html>
+<script>
+    /*  
+        formData
+            *实例化一个formData对象; new ForData()
+                *方法
+                    *append(name,value)往ForData实例中添加信息
+    */  
+     
+    (()=>{
+        let  upLoadCentent = document.querySelector('#upLoadCentent');   
+        let  btnSend = document.querySelector('.btnSend');
+        let  btnSend2 = document.querySelector('.btnSend2');
+        btnSend.onclick = ()=>{
+            console.log('files',upLoadCentent.files);
+            let formData = new FormData();
+            // formData.append('元素对象',元素对象下的files属性（是数组）);
+            formData.append('upLoadCentent',upLoadCentent.files[0]);
+            formData.append('upLoadId','123abc');
+            
+            let xhr = new XMLHttpRequest();
+            xhr.onload = ()=>{
+                console.log(xhr.responseText);
+            }
+            xhr.open('post','/upload/goods',true);
+            xhr.send(formData);
+        }
+        btnSend2.onclick = ()=>{
+            // alert();
+            console.log('files',upLoadCentent.files);
+            let formData = new FormData();
+            //遍历files并写入formData
+            for( let i = 0 ;i<upLoadCentent.files.length; i++ ){
+                formData.append('upLoadCentent',upLoadCentent.files[i]);
+            }
+            let xhr = new XMLHttpRequest();
+            xhr.onload = ()=>{
+                let res = JSON.parse(xhr.responseText);
+                // console.log(xhr.responseText);
+                console.log(res);
+            }
+            xhr.open('post','/upload',true);
+            xhr.send(formData);
+        }
+    })(); 
+</script>

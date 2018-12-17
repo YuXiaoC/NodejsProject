@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#box{
+    width: 600px;
+    height: 560px;
+    background: #f3f3f3;
+    margin: 100px auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+    .divTitle{
+        width: 520px;
+        height: 120px;
+        text-align: center;
+        line-height: 120px;
+        img{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        span{
+            width: 168px;
+            height: 37px;
+            display: inline-block;
+            text-align: center;
+            line-height: 37px;
+            font-size: 20px;
+            vertical-align: middle;
+          }  
+    }
+    .from{
+        margin: 0 auto;
+        width: 400px;
+        .form-check{
+            a{
+                float: right;
+                color: #009688;
+            }
+        }
+        .btn{
+            margin-top: 30px;
+            width: 100%;
+        }
+    }
+}

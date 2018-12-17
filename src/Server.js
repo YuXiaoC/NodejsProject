@@ -9,7 +9,7 @@ let app =  express();
 app.use(express.static(root));
 
 
-//配置路由
+//配置路由,使用Router路由模块
 app.use(Router);
 //监听端口
 app.listen(port,()=>{
